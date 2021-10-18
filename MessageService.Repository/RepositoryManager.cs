@@ -1,20 +1,52 @@
 ﻿using MessageService.Contracts;
-using System;
+using MessageService.Entities;
 using System.Threading.Tasks;
 
 namespace MessageService.Repository
 {
     public class RepositoryManager : IRepositoryManager
     {
-        public IMessageRepository Message =>
-            throw new NotImplementedException();
+        private readonly RepositoryContext _repositoryContext;
+        private IMessageRepository _messageRepository;
+        private IDialogueRepository _dialogueRepository;
 
-        public IDialogueRepository Dialogue =>
-            throw new NotImplementedException();
-
-        public Task SaveAsync()
+        public RepositoryManager(RepositoryContext repositoryContext)
         {
-            throw new NotImplementedException();
+            _repositoryContext = repositoryContext;
+        }
+
+        public IMessageRepository Message
+        {
+            get
+            {
+                if (_messageRepository == null)
+                    _messageRepository = new MessageRepository(_repositoryContext);
+
+                return _messageRepository;
+            }
+        }
+
+        public IDialogueRepository Dialogue
+        {
+            get
+            {
+                if (_dialogueRepository == null)
+                    _dialogueRepository = new DialogueRepository(_repositoryContext);
+
+                return _dialogueRepository;
+            }
+        }
+
+        public async Task SaveAsync()
+        {
+            try
+            {
+                await _repositoryContext.SaveChangesAsync();
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

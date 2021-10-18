@@ -2,11 +2,10 @@
 using MessageService.Entities;
 using MessageService.Entities.Models;
 using MessageService.Entities.RequestFeatures;
-using MessageService.Repository;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
-namespace Repository
+namespace MessageService.Repository
 {
     public class DialogueRepository : RepositoryBase<Dialogue>, IDialogueRepository
     {
