@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MessageService.Entities.RequestFeatures
+﻿namespace MessageService.Entities.RequestFeatures
 {
     public class MetaData
     {
