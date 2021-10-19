@@ -33,7 +33,7 @@ namespace MessageService.Repository
                 (c.FirstMemberProfileId.Equals(firstMemberId) || c.SecondMemberProfileId.Equals(firstMemberId)) &&
                 (c.FirstMemberProfileId.Equals(secondMemberId) || c.SecondMemberProfileId.Equals(secondMemberId)), 
                     trackChanges)
-            .SingleOrDefaultAsync();
+                .SingleOrDefaultAsync();
 
         public void CreateDialogue(Dialogue dialogue) =>
             Create(dialogue);

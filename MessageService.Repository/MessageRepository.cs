@@ -27,7 +27,7 @@ namespace MessageService.Repository
                 .ToPagedList(messages, messageParameters.PageNumber, messageParameters.PageSize);
         }
 
-        public async Task<Message> GetMessageAsync(int messageId, bool trackChanges) =>
+        public async Task<Message> GetMessageByIdAsync(long messageId, bool trackChanges) =>
             await FindByCondition(c => c.Id.Equals(messageId), trackChanges)
                 .SingleOrDefaultAsync();
 

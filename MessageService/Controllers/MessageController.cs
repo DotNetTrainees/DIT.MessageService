@@ -58,15 +58,36 @@ namespace MessageService.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateMessage(long messageId, [FromBody] MessageIncomingDto messageIncoming)
         {
+            var message = await _repositoryManager.Message.GetMessageByIdAsync(messageId, trackChanges: true);
+            if (message == null)
+            {
+                return NotFound($"Message with id {{{messageId}}} is not found");
+            }
+
+            var dialogue = await _repositoryManager.Dialogue.GetDialogueByIdAsync(
+                messageIncoming.DialogueId, trackChanges: false);
+            if (dialogue == null)
+            {
+                return NotFound($"Dialogue with id {{{messageIncoming.DialogueId}}} is not found");
+            }
+
+            _mapper.Map(messageIncoming, message);
 
             await _repositoryManager.SaveAsync();
 
-            return Ok();
+            return NoContent();
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteMessage(long messageId)
         {
+            var message = await _repositoryManager.Message.GetMessageByIdAsync(messageId, trackChanges: false);
+            if (message == null)
+            {
+                return NotFound($"Message with id {{{messageId}}} is not found");
+            }
+
+            _repositoryManager.Message.DeleteMessage(message);
 
             await _repositoryManager.SaveAsync();
 

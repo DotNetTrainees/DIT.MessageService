@@ -9,7 +9,7 @@ namespace MessageService.Contracts
         public Task<PagedList<Message>> GetAllMessagesAsync(MessageParameters messageParameters,
              bool trackChanges);
 
-        public Task<Message> GetMessageAsync(int messageId, bool trackChanges);
+        public Task<Message> GetMessageByIdAsync(long messageId, bool trackChanges);
 
         public void CreateMessage(Message message);
 
