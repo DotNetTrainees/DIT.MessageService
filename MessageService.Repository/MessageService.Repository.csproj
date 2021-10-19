@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MessageService.Contracts\MessageService.Contracts.csproj" />
     <ProjectReference Include="..\MessageService.Entities\MessageService.Entities.csproj" />
+    <ProjectReference Include="..\MessageService.Infrastructure\MessageService.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

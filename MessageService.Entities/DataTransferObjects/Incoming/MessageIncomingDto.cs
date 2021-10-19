@@ -5,8 +5,8 @@ namespace MessageService.Entities.DataTransferObjects.Incoming
 {
     public class MessageIncomingDto
     {
-        [Required(ErrorMessage = "Account id is a required field.")]
-        public Guid AccountId { get; set; }
+        [Required(ErrorMessage = "Profile id is a required field.")]
+        public Guid ProfileId { get; set; }
 
         [Required(ErrorMessage = "Dialogue id is a required field.")]
         public Guid DialogueId { get; set; }

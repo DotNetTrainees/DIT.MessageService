@@ -13,16 +13,13 @@ namespace MessageService.Entities
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Message>().Property(p => p.Id).IsRequired();
-            modelBuilder.Entity<Message>().Property(p => p.AccountId);
+            modelBuilder.Entity<Message>().Property(p => p.ProfileId).IsRequired();
             modelBuilder.Entity<Message>().Property(p => p.DialogueId).IsRequired();
             modelBuilder.Entity<Message>().Property(p => p.SendDate).IsRequired();
             modelBuilder.Entity<Message>().Property(p => p.Text).IsRequired();
 
-            modelBuilder.Entity<Dialogue>().Property(p => p.Id).IsRequired();
-            modelBuilder.Entity<Dialogue>().Property(p => p.FirstMemberAccountId).IsRequired();
-            modelBuilder.Entity<Dialogue>().Property(p => p.SecondMemberAccountId).IsRequired();
-
+            modelBuilder.Entity<Dialogue>().Property(p => p.FirstMemberProfileId).IsRequired();
+            modelBuilder.Entity<Dialogue>().Property(p => p.SecondMemberProfileId).IsRequired();
         }
 
         public DbSet<Message> Messages { get; set; }

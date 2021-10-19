@@ -6,8 +6,8 @@ namespace MessageService.Entities.DataTransferObjects.Outgoing
     {
         public Guid Id { get; set; }
 
-        public Guid FirstMemberAccountId { get; set; }
+        public Guid FirstMemberProfileId { get; set; }
 
-        public Guid SecondMemberAccountId { get; set; }
+        public Guid SecondMemberProfileId { get; set; }
     }
 }

@@ -32,8 +32,8 @@ namespace MessageService.Extensions
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<RepositoryContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("MessageServiceConnection"), builder =>
-                builder.MigrationsAssembly("Repository")));
+                options.UseSqlServer(configuration.GetConnectionString("MessageServiceDbConnection"), builder =>
+                builder.MigrationsAssembly("MessageService.Infrastructure")));
         }
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
